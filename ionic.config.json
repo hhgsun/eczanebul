@@ -1,0 +1,7 @@
+{
+  "name": "eczanebul",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
