@@ -6,13 +6,13 @@ import {
   } from '@ionic/react';
 import { City } from '../data/ApiData';
 
-interface MessageListItemProps {
+interface CityItemProps {
   city: City;
 }
 
-const MessageListItem: React.FC<MessageListItemProps> = ({ city }) => {
+const CityItem: React.FC<CityItemProps> = ({ city }) => {
   return (
-    <IonItem routerLink={`/message/${city.id}`} detail={false}>
+    <IonItem routerLink={`/cities/${city.id}`} detail={false}>
       <div slot="start" className="dot dot-unread"></div>
       <IonLabel className="ion-text-wrap">
         <h2>
@@ -30,4 +30,4 @@ const MessageListItem: React.FC<MessageListItemProps> = ({ city }) => {
   );
 };
 
-export default MessageListItem;
+export default CityItem;

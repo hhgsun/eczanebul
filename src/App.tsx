@@ -4,6 +4,8 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import ViewMessage from './pages/ViewMessage';
+import CitiesPage from './pages/CitiesPage';
+import AreasPage from './pages/AreasPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,14 +25,20 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import PharmaciesPage from './pages/PharmaciesPage';
+import PharmacyDetailPage from './pages/PharmacyDetailPage';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/home" component={Home} exact={true} />
+        <Route path="/cities" component={CitiesPage} exact={true} />
+        <Route path="/cities/:cityId" component={AreasPage} exact={true} />
+        <Route path="/cities/:cityId/:areaName" component={PharmaciesPage} exact={true} />
+        <Route path="/cities/:cityId/:areaName/:pharmacyName" component={PharmacyDetailPage} exact={true} />
         <Route path="/message/:id" component={ViewMessage} exact={true} />
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
+        <Route exact path="/" render={() => <Redirect to="/cities" />} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

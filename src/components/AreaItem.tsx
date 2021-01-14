@@ -4,24 +4,25 @@ import {
   IonLabel,
   IonNote
   } from '@ionic/react';
-import { City } from '../data/ApiData';
+import { Area } from '../data/ApiData';
 
-interface MessageListItemProps {
-  city: City;
+interface CityItemProps {
+  cityId: number,
+  area: Area;
 }
 
-const MessageListItem: React.FC<MessageListItemProps> = ({ city }) => {
+const AreaItem: React.FC<CityItemProps> = ({ cityId, area }) => {
   return (
-    <IonItem routerLink={`/message/${city.id}`} detail={false}>
+    <IonItem routerLink={`/cities/${cityId}/${area.name}`} detail={false}>
       <div slot="start" className="dot dot-unread"></div>
       <IonLabel className="ion-text-wrap">
         <h2>
-          {city.name}
+          {area.name}
           <span className="date">
-            <IonNote>{city.count_pharmacy}</IonNote>
+            <IonNote>{area.count_pharmacy}</IonNote>
           </span>
         </h2>
-        <h3>{city.id}</h3>
+        <h3>Nöbetçi Eczaneler: {area.pharmacies.length}</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
@@ -30,4 +31,4 @@ const MessageListItem: React.FC<MessageListItemProps> = ({ city }) => {
   );
 };
 
-export default MessageListItem;
+export default AreaItem;
