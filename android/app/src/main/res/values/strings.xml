@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">eczanebul</string>
+    <string name="title_activity_main">eczanebul</string>
+    <string name="package_name">com.hhgsun.eczanebul</string>
+    <string name="custom_url_scheme">com.hhgsun.eczanebul</string>
+</resources>

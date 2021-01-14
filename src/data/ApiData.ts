@@ -25,7 +25,7 @@ export const fetchApiData = async () => {
   return new Promise((resolve,reject) => {
     setTimeout(async () => {
       try {
-        const res = await fetch("http://localhost:5858");
+        const res = await fetch("https://emlaksorgu.com/hhgsun_buleczane_api/");
         const data = await res.json();
         cities = data;
         resolve(cities);
