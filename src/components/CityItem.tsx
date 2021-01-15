@@ -1,9 +1,9 @@
 import React from 'react';
 import {
+  IonAvatar,
   IonItem,
   IonLabel,
-  IonNote
-  } from '@ionic/react';
+} from '@ionic/react';
 import { City } from '../data/ApiData';
 
 interface CityItemProps {
@@ -12,20 +12,21 @@ interface CityItemProps {
 
 const CityItem: React.FC<CityItemProps> = ({ city }) => {
   return (
-    <IonItem routerLink={`/cities/${city.id}`} detail={false}>
-      <div slot="start" className="dot dot-unread"></div>
+    <IonItem lines="full" routerLink={`/cities/${city.id}`} detail={false}>
+      <IonAvatar style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2em', fontWeight: 'bold' }} slot="start">
+        {city.id}
+      </IonAvatar>
       <IonLabel className="ion-text-wrap">
         <h2>
           {city.name}
-          <span className="date">
-            <IonNote>{city.count_pharmacy}</IonNote>
-          </span>
         </h2>
-        <h3>{city.id}</h3>
+        <h3>
+          {city.count_pharmacy} Eczane Açık
+        </h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          {city.name} şehrindeki nöbetçi eczaneler
         </p>
-      </IonLabel>
+      </IonLabel>      
     </IonItem>
   );
 };

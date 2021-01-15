@@ -1,10 +1,11 @@
 import React from 'react';
 import {
+  IonIcon,
   IonItem,
-  IonLabel,
-  IonNote
+  IonLabel
 } from '@ionic/react';
 import { Pharmacy } from '../data/ApiData';
+import { call, location } from 'ionicons/icons';
 
 interface PharmacyItemProps {
   cityId: string,
@@ -14,16 +15,18 @@ interface PharmacyItemProps {
 
 const PharmacyItem: React.FC<PharmacyItemProps> = ({ cityId, areaName, pharmacy }) => {
   return (
-    <IonItem routerLink={`/cities/${cityId}/${areaName}/${pharmacy.name}`} detail={false} >
-      <div slot="start" className="dot dot-unread"></div>
+    <IonItem lines="full" routerLink={`/cities/${cityId}/${areaName}/${pharmacy.name}`} detail={false} >
       <IonLabel className="ion-text-wrap">
         <h2>
           {pharmacy.name}
-          <span className="date">
-            <IonNote>{pharmacy.address}</IonNote>
-          </span>
         </h2>
-        <h3>{pharmacy.coordinates}</h3>
+        <h3 style={{color: 'var(--ion-color-step-600, #666666)'}}>
+          <IonIcon icon={call} slot="start" /> {pharmacy.phone}
+        </h3>
+        <p>
+          <IonIcon icon={location} slot="start" />
+          {pharmacy.address}
+        </p>
       </IonLabel>
     </IonItem>
   );

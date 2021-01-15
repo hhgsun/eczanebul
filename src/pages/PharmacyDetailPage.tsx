@@ -107,9 +107,9 @@ const PharmacyDetailPage: React.FC<PharmacyDetailPageProps> = ({ match }) => {
                 />
                 <Marker position={[pharmacyCoords.lat, pharmacyCoords.lng]}>
                   <Popup>
-                    {pharmacy.name}<br />
-                    {pharmacy.address}<br />
-                    {pharmacy.phone}
+                    <h3>{pharmacy.name}</h3>
+                    <h5><b>Adres:</b> {pharmacy.address}</h5>
+                    <h5><b>Tel:</b> {pharmacy.phone}</h5>
                   </Popup>
                 </Marker>
               </MapContainer>
