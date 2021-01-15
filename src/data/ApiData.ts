@@ -51,8 +51,6 @@ export const getArea = (cityId: string, areaName: string) => {
       c.areas.forEach((a) => {
         if (a.name === areaName) {
           area = a;
-          console.log('Selected City:', c);
-          console.log('Selected Area:', a);
           return area;
         }
       });
@@ -67,7 +65,6 @@ export const getPharmacy = (cityId: string, areaName: string, pharmacyName: stri
   area?.pharmacies.forEach(p => {
     if (p.name === pharmacyName) {
       pharmacy = p;
-      console.log('Selected Pharmacy:', p);
       return p;
     }
   });
