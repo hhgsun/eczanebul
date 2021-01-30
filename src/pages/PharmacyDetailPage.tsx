@@ -13,7 +13,8 @@ import {
   IonSpinner,
   IonFab,
   IonFabButton,
-  IonIcon
+  IonIcon,
+  IonButton,
 } from '@ionic/react';
 import { RouteComponentProps } from 'react-router';
 
@@ -54,14 +55,16 @@ const PharmacyDetailPage: React.FC<PharmacyDetailPageProps> = ({ match }) => {
     loadPharmicyData();
   });
 
-  /* const openMap = (latlng: string) => {
+  const openMap = (lat: string, lon: string) => {
+    console.log(lat, lon);
     if (isPlatform('ios')) {
-      window.open('maps://?q=' + latlng, '_system');
+      window.open('maps://?q=' + lat + ',' + lon, '_system');
+    } else if (isPlatform('desktop')) {
+      window.open('https://maps.google.com/maps?daddr=' + lat + ',' + lon + '&amp;ll=');
     } else {
-      let label = encodeURI('My Label');
-      window.open('geo:0,0?q=' + latlng + '(' + label + ')', '_system');
+      window.open('geo:' + lat + ',' + lon + '?q=' + lat + ',' + lon + '', '_system');
     }
-  } */
+  }
 
   const splitCoordinates = (coordinates: string) => {
     let coords = coordinates.split(',');
@@ -70,6 +73,7 @@ const PharmacyDetailPage: React.FC<PharmacyDetailPageProps> = ({ match }) => {
       lng: coords[1]
     };
   }
+
 
   return (
     <IonPage id="home-page">
@@ -90,9 +94,9 @@ const PharmacyDetailPage: React.FC<PharmacyDetailPageProps> = ({ match }) => {
             </IonTitle>
           </IonToolbar>
         </IonHeader>
-        
+
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton href={"tel:"+pharmacy?.phone}>
+          <IonFabButton href={"tel:" + pharmacy?.phone}>
             <IonIcon icon={call} />
           </IonFabButton>
         </IonFab>
@@ -107,9 +111,17 @@ const PharmacyDetailPage: React.FC<PharmacyDetailPageProps> = ({ match }) => {
                 />
                 <Marker position={[pharmacyCoords.lat, pharmacyCoords.lng]}>
                   <Popup>
-                    <h3>{pharmacy.name}</h3>
-                    <h5><b>Adres:</b> {pharmacy.address}</h5>
-                    <h5><b>Tel:</b> {pharmacy.phone}</h5>
+                    <h3><b>{pharmacy.name}</b></h3>
+                    <b>Adres:</b>
+                    <h5 style={{ marginTop: 0 }}>{pharmacy.address}</h5>
+                    <b>Tel:</b>
+                    <h5 style={{ marginTop: 0 }}>
+                      <a style={{ textDecoration: 'none', color: 'black' }} href={'tel:' + pharmacy.phone}>{pharmacy.phone}</a>
+                    </h5>
+                    <br></br>
+                    {
+                      <IonButton expand="full" onClick={() => openMap(pharmacyCoords.lat, pharmacyCoords.lng)} target="_blank" color="primary">Yol Tarifi</IonButton>
+                    }
                   </Popup>
                 </Marker>
               </MapContainer>
