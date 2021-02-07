@@ -40,8 +40,6 @@ export const fetchApiData = async () => {
 
 export const getCities = () => cities;
 
-// export const setCities = (_cities: City[]) => cities = _cities;
-
 export const getCity = (id: string) => cities.find(m => m.id.toString() === id);
 
 export const getArea = (cityId: string, areaName: string) => {

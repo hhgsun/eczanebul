@@ -2,7 +2,6 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
 import ViewMessage from './pages/ViewMessage';
 import CitiesPage from './pages/CitiesPage';
 import AreasPage from './pages/AreasPage';
@@ -32,7 +31,6 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" component={Home} exact={true} />
         <Route path="/cities" component={CitiesPage} exact={true} />
         <Route path="/cities/:cityId" component={AreasPage} exact={true} />
         <Route path="/cities/:cityId/:areaName" component={PharmaciesPage} exact={true} />
